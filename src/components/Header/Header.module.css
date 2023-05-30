@@ -1,0 +1,43 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #CCCCCC;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.list{
+    background-color: #444;
+    text-align: right;
+    padding: 0px;
+    margin: 0px;
+}
+
+.listItem{
+    font-size: 24px;
+    height: 40px;
+    padding: 20px;
+    display: inline-block;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.link{
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    overflow: auto;
+    text-align: left;
+    border: 1px solid #ffffff;
+    border-radius: 5%;
+    background-color: #444;
+    padding: 5px;
+}
+
+.listItem:hover .dropdown {
+    display: block;
+  }

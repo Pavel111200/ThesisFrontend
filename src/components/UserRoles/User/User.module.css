@@ -1,0 +1,35 @@
+.item {
+    display: inline;
+    padding: 10px;
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.list {
+    list-style: none;
+    border: 2px solid #444;
+    border-radius: 50px;
+    width: 50%;
+    text-align: center;
+    margin: 10px;
+}
+
+.btn{
+    border-radius: 15px;
+    border: 2px solid lightgreen;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: lightgreen;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    color:#f0f0f0;
+    background-color: lightgreen;
+}

@@ -1,0 +1,55 @@
+.form{
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 32px auto;
+    text-align: center;
+    padding: 32px;
+}
+
+.img{
+    width: 40%;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 26px auto;
+    text-align: left;
+}
+
+.label{
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.input{
+    border-radius: 6px;
+    margin-bottom: 20px;
+    height: 36px;
+    padding: 0px 5px;
+}
+
+.input:last-child{
+    height: 72px;
+    resize: none;
+    padding: 5px;
+}
+
+.btn{
+    width: 50%;
+    height: 36px;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 1px dashed black;
+    cursor: pointer;
+}
