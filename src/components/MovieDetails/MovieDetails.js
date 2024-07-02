@@ -45,7 +45,7 @@ const MovieDetails = () => {
                     Writer: {movie.writer}
                 </p>
                 <p className={styles.info}>
-                    Director: {movie.writer}
+                    Director: {movie.director}
                 </p>
                 {movie.rating ? <p className={styles.info}>Rating: {movie.rating}</p> : <p className={styles.info}>No rating!</p>}
                 {movie.genre ? <p className={styles.info}>Genre: {movie.genre}</p> : <p className={styles.info}>No genre!</p>}
