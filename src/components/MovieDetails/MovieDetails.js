@@ -1,29 +1,15 @@
-import { useEffect, useState } from 'react';
-import {Link, useParams, useNavigate, Navigate} from 'react-router-dom';
-import { useUserContext } from '../../contexts/UserContext';
-import { deleteMovie, getOne } from '../../services/movieService';
+import {Link, useParams} from 'react-router-dom';
 import styles from './MovieDetails.module.css';
 import ReviewList from '../ReviewList/ReviewList';
+import { useMovieContext } from '../../contexts/MovieContext';
 
 const MovieDetails = () => {
     const {movieId} = useParams();
-    const [movie, setMovie] = useState({});
-    const {user} = useUserContext();
-    const navigate = useNavigate();
+    const {getMovieById} = useMovieContext();
 
-    const DeleteHandler = () => {
-        deleteMovie(movieId,user.accessToken)
-        .then(()=> navigate('/catalog/movies'))
-    }
+    const movie = getMovieById(movieId);
 
-    useEffect(() => {
-        try {
-            getOne(movieId)
-            .then(result => setMovie(result));
-        } catch (error) {
-            <Navigate to='/404' replace />
-        }
-    },[movieId]);
+    const DeleteHandler = () => console.log('Deleted');
 
     return (
         <>
@@ -51,18 +37,13 @@ const MovieDetails = () => {
                 {movie.genre ? <p className={styles.info}>Genre: {movie.genre}</p> : <p className={styles.info}>No genre!</p>}
                 {movie.runtime ? <p className={styles.info}>Runtime: {movie.runtime}</p> : <p className={styles.info}>No runtime!</p>}
                 <div className={styles.buttonWrapper}>
-                    <Link to={`/catalog/movies/${movieId}/review`} className={styles.btn}>Add review</Link>
-                    {user.role === "Admin" && 
-                    <>
+                    <Link to={`/catalog/movies/${movie.id}/review`} className={styles.btn}>Add review</Link>
                     <Link to={`/catalog/movies/${movieId}/edit`} className={styles.btn}>
                         Edit
                     </Link>
                     <button onClick={DeleteHandler} className={`${styles.btn} ${styles.danger}`}>
                         Delete
-                    </button>
-                    
-                    </>
-                    }
+                    </button>                    
                 </div>
             </div>
         </section>
