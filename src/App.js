@@ -44,12 +44,13 @@ function App() {
           <Route path='/catalog/movies/:movieId' element={<MovieDetails/>} />
           <Route path='/create/movie' element={<Create />} />
           <Route path='/catalog/shows/:showId' element={<ShowDetails/>} />
+          <Route path='/create/show' element={<CreateShow />} />
           
 
           <Route element={<PrivateRoute />}>
             <Route path='/logout' element={<Logout />} />
             
-            <Route path='/create/show' element={<CreateShow />} />
+            
             <Route path='/likedmovies' element={<MyMovies />} />
             <Route path='/likedshows' element={<MyShows />} />
             

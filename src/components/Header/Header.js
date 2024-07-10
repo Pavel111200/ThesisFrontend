@@ -38,9 +38,10 @@ const Header = () => {
                     <div className={styles.dropdown}>
                         <Link to="/catalog/shows" className={styles.link}>All Shows</Link>
                         <Link to="likedshows" className={styles.link}>Liked Shows</Link>
+                        <Link to="/create/show" className={styles.link}>Create Show</Link>
                         {user.role ==="Admin" &&
                         <>
-                            <Link to="/create/show" className={styles.link}>Create Show</Link>
+                            
                             <Link to="/catalog/shows/suggestions" className={styles.link}>Suggested Shows</Link>
                         </>
                         }
