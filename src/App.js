@@ -43,6 +43,7 @@ function App() {
           <Route path='/catalog/shows' element={<AllShows/>} />
           <Route path='/catalog/movies/:movieId' element={<MovieDetails/>} />
           <Route path='/create/movie' element={<Create />} />
+          <Route path='/catalog/shows/:showId' element={<ShowDetails/>} />
           
 
           <Route element={<PrivateRoute />}>
@@ -52,7 +53,7 @@ function App() {
             <Route path='/likedmovies' element={<MyMovies />} />
             <Route path='/likedshows' element={<MyShows />} />
             
-            <Route path='/catalog/shows/:showId' element={<ShowDetails/>} />
+            
             <Route path='/catalog/movies/:movieId/edit' element={<MovieEdit />} />
             <Route path='/catalog/movies/:movieId/review' element={<MovieReview />} />
             <Route path='/catalog/shows/:showId/review' element={<ShowReview />} />
