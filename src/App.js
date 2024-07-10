@@ -40,11 +40,12 @@ function App() {
           <Route path='/catalog/movies' element={<AllMovies/>} />
           <Route path='/catalog/shows' element={<AllShows/>} />
           <Route path='/catalog/movies/:movieId' element={<MovieDetails/>} />
+          <Route path='/create/movie' element={<Create />} />
           
 
           <Route element={<PrivateRoute />}>
             <Route path='/logout' element={<Logout />} />
-            <Route path='/create/movie' element={<Create />} />
+            
             <Route path='/create/show' element={<CreateShow />} />
             <Route path='/likedmovies' element={<MyMovies />} />
             <Route path='/likedshows' element={<MyShows />} />

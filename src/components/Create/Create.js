@@ -1,11 +1,10 @@
-import { create } from '../../services/movieService';
 import styles from './Create.module.css'
-import { useUserContext } from '../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
+import { useMovieContext } from '../../contexts/MovieContext';
 
 const Create = () => {
-    const { user } = useUserContext();
     const navigate = useNavigate();
+    const {addMovie} = useMovieContext();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -21,10 +20,20 @@ const Create = () => {
             description
         } = Object.fromEntries(new FormData(e.target));
 
-        create({ image, title, genre, runtime, writer, director, createdOn, description }, user.accessToken)
-            .then(() => {
-                navigate('/');
-            });
+        const movie = {
+            title: title,
+            image: image,
+            genre: genre,
+            runtime: runtime,
+            writer: writer,
+            director: director,
+            createdOn: createdOn,
+            description: description,
+            rating: Math.floor(Math.random() * 11),
+        };
+
+        addMovie(movie);
+        navigate("/");
     }
 
     return (

@@ -24,9 +24,10 @@ const Header = () => {
                     <div className={styles.dropdown}>
                         <Link to="/catalog/movies" className={styles.link}>All Movies</Link>
                         <Link to="likedmovies" className={styles.link}>Liked Movies</Link>
+                        <Link to="/create/movie" className={styles.link}>Create Movie</Link>
                         {user.role ==="Admin" &&
                         <>
-                            <Link to="/create/movie" className={styles.link}>Create Movie</Link>
+                            
                             <Link to="/catalog/movies/suggestions" className={styles.link}>Suggested Movies</Link>
                         </>
                         }

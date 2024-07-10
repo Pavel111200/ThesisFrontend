@@ -61,7 +61,10 @@ export const MovieProvider = ({
     },[])
 
     const addMovie = (movie) => {
-        setMovies(movie);
+        let newMovies = movies;
+        movie.id = movies.length + 1;
+        newMovies.push(movie);
+        setMovies(newMovies);
     };
 
     const getMovieById = (movieId) => {
