@@ -42,13 +42,13 @@ const ShowDetails = () => {
                     {show.description}
                 </p>
                 <p className={styles.info}>
-                   Season: {show.season}
+                   Seasons: {show.seasons}
                 </p>
                 <p className={styles.info}>
-                    Writer: {show.writer}
+                    Creator: {show.creator}
                 </p>
                 <p className={styles.info}>
-                    Number of episodes: {show.numberOfEpisodes}
+                    Number of episodes: {show.episodes}
                 </p>
                 {show.rating ? <p className={styles.info}>Rating: {show.rating}</p> : <p className={styles.info}>No rating!</p>}
                 {show.genre ? <p className={styles.info}>Genre: {show.genre}</p> : <p className={styles.info}>No genre!</p>}

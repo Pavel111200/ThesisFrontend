@@ -25,12 +25,14 @@ import ShowSuggestions from './components/ShowSuggestions/ShowSuggestions';
 import PrivateRoute from './components/common/PrivateRoute';
 import NotFoundComponent from './components/common/NotFoundComponent';
 import { MovieProvider } from './contexts/MovieContext';
+import { ShowProvider } from './contexts/ShowContext';
 
 function App() {
   return (
     <div>
       <UserProvider>
         <MovieProvider>
+        <ShowProvider>
         <Header />
 
         <Routes >
@@ -64,6 +66,7 @@ function App() {
           <Route path='*' element={<NotFoundComponent />} />
 
         </Routes>
+        </ShowProvider>
         </MovieProvider>
       </UserProvider>
     </div>

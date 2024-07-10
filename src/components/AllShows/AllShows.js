@@ -1,26 +1,9 @@
-import { useEffect, useState } from "react";
-import { getAll } from "../../services/showService";
 import ShowCardList from "../ShowCardList/ShowCardList";
 import styles from './AllShows.module.css';
-import { Navigate } from "react-router-dom";
+import { useShowContext } from "../../contexts/ShowContext";
 
 const AllShows = () => {
-    const [shows, setShows] = useState([]);
-
-    useEffect(() => {
-        try {
-            getAll()
-        .then(result => {
-            setShows(result);
-        })
-        } catch (error) {
-            return (
-                <Navigate to='/404' replace />
-            )
-        }
-
-        
-    },[]);
+    const {shows} = useShowContext();
 
     return (
         <>
