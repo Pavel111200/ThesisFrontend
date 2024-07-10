@@ -33,7 +33,7 @@ const Create = () => {
         };
 
         addMovie(movie);
-        navigate("/");
+        navigate("/catalog/movies");
     }
 
     return (
