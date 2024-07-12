@@ -1,34 +1,23 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useUserContext } from "../../contexts/UserContext";
-import { editMovie, getOne } from "../../services/movieService";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from './MovieEdit.module.css';
+import { useMovieContext } from "../../contexts/MovieContext";
 
 
 const MovieEdit = () => {
     const {movieId} = useParams();
     const [movie, setMovie] = useState({});
-    const {user} = useUserContext();
     const navitage = useNavigate();
+    const {getMovieById, editMovie} = useMovieContext();
 
-    useEffect(() => {
-        try {
-            getOne(movieId)
-            .then(result => setMovie(result));
-        } catch (error) {
-            console.log(error);
-        }
-    },[movieId]);
+    useEffect(()=>{
+        setMovie(getMovieById(movieId))
+    },[movieId, getMovieById])
 
     const onSubmit = (e) => {
         e.preventDefault();
-        try {
-            editMovie(movie,user.accessToken)
-        .then(()=> navitage(`/catalog/movies/${movieId}`));
-        } catch (error) {
-            <Navigate to='/404' replace />
-        }
-
+        editMovie(movie);
+        navitage(`/catalog/movies/${movieId}`);
         
     }
 
@@ -106,7 +95,7 @@ const MovieEdit = () => {
                     Release date:
                 </label>
                 <input 
-                type="date"
+                type="text"
                     className={styles.input} 
                     name="createdOn" 
                     value={movie.createdOn ? movie.createdOn : ''}

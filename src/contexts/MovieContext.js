@@ -72,11 +72,18 @@ export const MovieProvider = ({
         return movie;
     }
 
+    const editMovie = (editedMovie) => {       
+        let newMovies = movies;
+        newMovies.splice(editedMovie.id - 1, 1, editedMovie)
+        return setMovies(newMovies);
+    }
+
     return (
         <MovieContext.Provider value={{
             movies,
             addMovie,
             getMovieById,
+            editMovie,
         }}>
             {children}
         </MovieContext.Provider>  
