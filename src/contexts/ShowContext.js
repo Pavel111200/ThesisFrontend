@@ -68,11 +68,18 @@ export const ShowProvider = ({
         return show;
     }
 
+    const editShow = (editedShow) => {       
+        let newShow = shows;
+        newShow.splice(editedShow.id - 1, 1, editedShow)
+        return setShows(newShow);
+    }
+
     return (
         <ShowContext.Provider value={{
             shows,
             addShow,
             getShowById,
+            editShow,
         }}>
             {children}
         </ShowContext.Provider>  

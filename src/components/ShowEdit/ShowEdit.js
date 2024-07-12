@@ -1,35 +1,23 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useUserContext } from "../../contexts/UserContext";
-import { editShow, getOne } from "../../services/showService";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from './ShowEdit.module.css';
+import { useShowContext } from "../../contexts/ShowContext";
 
 
 const ShowEdit = () => {
     const {showId} = useParams();
     const [show, setShow] = useState({});
-    const {user} = useUserContext();
     const navitage = useNavigate();
+    const {getShowById, editShow} = useShowContext();
 
     useEffect(() => {
-        try {
-            getOne(showId)
-            .then(result => setShow(result));
-        } catch (error) {
-            console.log(error);
-        }
-    },[showId]);
+        setShow(getShowById(showId))
+    },[showId,getShowById]);
 
     const onSubmit = (e) => {
         e.preventDefault();
-        try {
-            editShow(show,user.accessToken)
-        .then(()=> navitage(`/catalog/shows/${showId}`));
-        } catch (error) {
-            <Navigate to='/404' replace />
-        }
-
-        
+        editShow(show);
+        navitage(`/catalog/shows/${showId}`)   
     }
 
     const onChange = (e) => {
@@ -68,38 +56,38 @@ const ShowEdit = () => {
                     value={show.genre ? show.genre : ''} 
                     onChange={onChange}
                 />
-                <label htmlFor="season" className={styles.label}>
+                <label htmlFor="seasons" className={styles.label}>
                     Season:
                 </label>
                 <input 
                     type="number" 
-                    name="season" 
+                    name="seasons" 
                     className={styles.input} 
-                    value={show.season ? show.season : ''} 
+                    value={Number(show.seasons) ? Number(show.seasons) : ''} 
                     onChange={onChange}
                 />
                 <label htmlFor="image" className={styles.label}>
                     Image Url:
                 </label>
                 <input type="text" name="image" className={styles.input} value={show.image} onChange={onChange}/>
-                <label htmlFor="writer" className={styles.label}>
-                    Writer:
+                <label htmlFor="creator" className={styles.label}>
+                    Creator:
                 </label>
                 <input 
                 type="text"
                     className={styles.input} 
-                    name="writer" 
-                    value={show.writer ? show.writer : ''}
+                    name="creator" 
+                    value={show.creator ? show.creator : ''}
                     onChange={onChange}
                 />
-                <label htmlFor="numberOfEpisodes" className={styles.label}>
+                <label htmlFor="episodes" className={styles.label}>
                     Number of episodes:
                 </label>
                 <input 
                 type="number"
                     className={styles.input} 
-                    name="numberOfEpisodes" 
-                    value={show.numberOfEpisodes ? show.numberOfEpisodes : ''}
+                    name="episodes" 
+                    value={Number(show.episodes) ? Number(show.episodes) : ''}
                     onChange={onChange}
                 />
                 <label htmlFor="description" className={styles.label}>
