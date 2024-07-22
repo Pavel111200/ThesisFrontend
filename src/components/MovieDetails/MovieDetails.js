@@ -1,15 +1,19 @@
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useNavigate} from 'react-router-dom';
 import styles from './MovieDetails.module.css';
 import ReviewList from '../ReviewList/ReviewList';
 import { useMovieContext } from '../../contexts/MovieContext';
 
 const MovieDetails = () => {
     const {movieId} = useParams();
-    const {getMovieById} = useMovieContext();
+    const navigate = useNavigate()
+    const {getMovieById, deleteMovie} = useMovieContext();
 
     const movie = getMovieById(movieId);
 
-    const DeleteHandler = () => console.log('Deleted');
+    const DeleteHandler = () => {
+        deleteMovie(movieId)
+        navigate("/catalog/movies")
+    }
 
     return (
         <>

@@ -78,12 +78,18 @@ export const MovieProvider = ({
         return setMovies(newMovies);
     }
 
+    const deleteMovie = (movieId) => {
+        let newMovies = movies.filter(m => m.id !== Number(movieId));
+        setMovies(newMovies);
+    }
+
     return (
         <MovieContext.Provider value={{
             movies,
             addMovie,
             getMovieById,
             editMovie,
+            deleteMovie
         }}>
             {children}
         </MovieContext.Provider>  
