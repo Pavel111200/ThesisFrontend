@@ -74,12 +74,18 @@ export const ShowProvider = ({
         return setShows(newShow);
     }
 
+    const deleteShow = (showId) => {
+        let newShows = shows.filter(s => s.id !== Number(showId));
+        setShows(newShows);
+    }
+
     return (
         <ShowContext.Provider value={{
             shows,
             addShow,
             getShowById,
             editShow,
+            deleteShow,
         }}>
             {children}
         </ShowContext.Provider>  

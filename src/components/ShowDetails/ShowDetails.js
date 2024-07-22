@@ -1,17 +1,19 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import styles from './ShowDetails.module.css';
 import ReviewList from '../ReviewList/ReviewList';
 import { useShowContext } from '../../contexts/ShowContext';
 
 const ShowDetails = () => {
     const { showId } = useParams();
-    const { getShowById } = useShowContext();
+    const navigate = useNavigate();
+    const { getShowById, deleteShow } = useShowContext();
 
     const show = getShowById(showId);
 
 
     const DeleteHandler = () => {
-        console.log('Deleted!');
+        deleteShow(showId);
+        navigate("/catalog/shows")
     }
 
     return (

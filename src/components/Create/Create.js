@@ -40,7 +40,7 @@ const Create = () => {
         <form className={styles.form} onSubmit={onSubmit}>
             <img
                 className={styles.img}
-                src="https://thumbs.dreamstime.com/b/movie-illustration-logo-vector-design-film-178252125.jpg"
+                src="https://www.pngall.com/wp-content/uploads/13/Movie-Hollywood-PNG-File.png"
                 alt="Movie logo"
             />
             <h2 className={styles.title}>Create Movie</h2>
