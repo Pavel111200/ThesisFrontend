@@ -27,54 +27,50 @@ import NotFoundComponent from './components/common/NotFoundComponent';
 import { MovieProvider } from './contexts/MovieContext';
 import { ShowProvider } from './contexts/ShowContext';
 import { MovieReviewProvider } from './contexts/MovieReviewContext';
+import { ShowReviewProvider } from './contexts/ShowReviewContext';
 
 function App() {
   return (
     <div>
       <UserProvider>
         <MovieProvider>
-        <ShowProvider>
-        <MovieReviewProvider>
-        <Header />
+          <ShowProvider>
+            <MovieReviewProvider>
+              <ShowReviewProvider>
+                <Header />
 
-        <Routes >
-          <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/catalog/movies' element={<AllMovies/>} />
-          <Route path='/catalog/shows' element={<AllShows/>} />
-          <Route path='/catalog/movies/:movieId' element={<MovieDetails/>} />
-          <Route path='/create/movie' element={<Create />} />
-          <Route path='/catalog/shows/:showId' element={<ShowDetails/>} />
-          <Route path='/create/show' element={<CreateShow />} />
-          <Route path='/catalog/movies/:movieId/edit' element={<MovieEdit />} />
-          <Route path='/catalog/shows/:showId/edit' element={<ShowEdit />} />
-          <Route path='/catalog/movies/:movieId/review' element={<MovieReview />} />
-          
+                <Routes >
+                  <Route path='/' element={<Home />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/catalog/movies' element={<AllMovies />} />
+                  <Route path='/catalog/shows' element={<AllShows />} />
+                  <Route path='/catalog/movies/:movieId' element={<MovieDetails />} />
+                  <Route path='/create/movie' element={<Create />} />
+                  <Route path='/catalog/shows/:showId' element={<ShowDetails />} />
+                  <Route path='/create/show' element={<CreateShow />} />
+                  <Route path='/catalog/movies/:movieId/edit' element={<MovieEdit />} />
+                  <Route path='/catalog/shows/:showId/edit' element={<ShowEdit />} />
+                  <Route path='/catalog/movies/:movieId/review' element={<MovieReview />} />
+                  <Route path='/catalog/shows/:showId/review' element={<ShowReview />} />
 
-          <Route element={<PrivateRoute />}>
-            <Route path='/logout' element={<Logout />} />
-            
-            
-            <Route path='/likedmovies' element={<MyMovies />} />
-            <Route path='/likedshows' element={<MyShows />} />
-            
-            
-            
-            
-            <Route path='/catalog/shows/:showId/review' element={<ShowReview />} />
-            
-            <Route path='/catalog/movies/suggestions' element={<MovieSuggestions />} />
-            <Route path='/catalog/shows/suggestions' element={<ShowSuggestions />} />
-            <Route path='/users/roles' element={<UserRoles />} />
-            <Route path='/users/suggestion' element={<UserSuggestion />} />
-          </Route>
 
-          <Route path='*' element={<NotFoundComponent />} />
+                  <Route element={<PrivateRoute />}>
+                    <Route path='/logout' element={<Logout />} />
+                    <Route path='/likedmovies' element={<MyMovies />} />
+                    <Route path='/likedshows' element={<MyShows />} />
+                    <Route path='/catalog/movies/suggestions' element={<MovieSuggestions />} />
+                    <Route path='/catalog/shows/suggestions' element={<ShowSuggestions />} />
+                    <Route path='/users/roles' element={<UserRoles />} />
+                    <Route path='/users/suggestion' element={<UserSuggestion />} />
+                  </Route>
 
-        </Routes>
-        </MovieReviewProvider>
-        </ShowProvider>
+                  <Route path='*' element={<NotFoundComponent />} />
+
+                </Routes>
+              </ShowReviewProvider>
+            </MovieReviewProvider>
+          </ShowProvider>
         </MovieProvider>
       </UserProvider>
     </div>

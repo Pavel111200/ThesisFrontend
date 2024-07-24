@@ -1,13 +1,11 @@
-import { rateShow } from '../../services/showService';
 import styles from './ShowReview.module.css'
-import { useUserContext } from '../../contexts/UserContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useShowReviewContext } from '../../contexts/ShowReviewContext';
 
 const ShowReview = () => {
-    const { user } = useUserContext();
     const navigate = useNavigate();
     const {showId} = useParams();
-    const userId = user.userId;
+    const { addReview } = useShowReviewContext();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -18,17 +16,22 @@ const ShowReview = () => {
             review
         } = Object.fromEntries(new FormData(e.target));
 
-        rateShow(showId, user.accessToken, { userId, title, rating, review })
-            .then(() => {
-                navigate(`/catalog/shows/${showId}`);
-            });
+        const newReview = {
+            showId: Number(showId),
+            title: title,
+            rating: rating,
+            review: review
+        }
+
+        addReview(newReview);
+        navigate(`/catalog/shows/${showId}`);
     }
 
     return (
     <form className={styles.form} onSubmit={onSubmit}>
         <img
             className={styles.img}
-            src="https://w7.pngwing.com/pngs/871/595/png-transparent-customer-review-information-others-hand-service-logo-thumbnail.png"
+            src="https://www.freeiconspng.com/thumbs/review-icon-png/review-icon-13.png"
             alt="Review logo"
         />
         <h2 className={styles.title}>Add Review</h2>

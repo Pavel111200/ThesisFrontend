@@ -2,14 +2,17 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import styles from './ShowDetails.module.css';
 import ReviewList from '../ReviewList/ReviewList';
 import { useShowContext } from '../../contexts/ShowContext';
+import { useShowReviewContext } from '../../contexts/ShowReviewContext';
 
 const ShowDetails = () => {
     const { showId } = useParams();
     const navigate = useNavigate();
     const { getShowById, deleteShow } = useShowContext();
+    const{ getReviewsByShowId } = useShowReviewContext();
 
     const show = getShowById(showId);
 
+    const reviews = getReviewsByShowId(showId);
 
     const DeleteHandler = () => {
         deleteShow(showId);
@@ -56,7 +59,7 @@ const ShowDetails = () => {
                 </div>
             </section>
             <section className={styles.reviewWrapper}>
-                {show.length === 0 ? <h2>No review!</h2> : <ReviewList reviews={show.reviews} />}
+                {reviews.length === 0 ? <h2>No review!</h2> : <ReviewList reviews={reviews} />}
             </section>
         </>
     );
