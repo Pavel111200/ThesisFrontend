@@ -1,13 +1,11 @@
-import { rateMovie } from '../../services/movieService';
 import styles from './MovieReview.module.css'
-import { useUserContext } from '../../contexts/UserContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useMovieReviewContext } from '../../contexts/MovieReviewContext';
 
 const MovieReview = () => {
-    const { user } = useUserContext();
     const navigate = useNavigate();
     const {movieId} = useParams();
-    const userId = user.userId;
+    const {addReview} = useMovieReviewContext();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -18,17 +16,22 @@ const MovieReview = () => {
             review
         } = Object.fromEntries(new FormData(e.target));
 
-        rateMovie(movieId, user.accessToken, { userId, title, rating, review })
-            .then(() => {
-                navigate(`/catalog/movies/${movieId}`);
-            });
+        const newReview = {
+            movieId: Number(movieId),
+            title: title,
+            review: review,
+            rating: rating
+        }
+
+        addReview(newReview)
+        navigate(`/catalog/movies/${movieId}`)
     }
 
     return (
     <form className={styles.form} onSubmit={onSubmit}>
         <img
             className={styles.img}
-            src="https://w7.pngwing.com/pngs/871/595/png-transparent-customer-review-information-others-hand-service-logo-thumbnail.png"
+            src="https://www.freeiconspng.com/thumbs/review-icon-png/review-icon-13.png"
             alt="Review logo"
         />
         <h2 className={styles.title}>Add Review</h2>

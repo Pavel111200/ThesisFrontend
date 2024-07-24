@@ -26,6 +26,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 import NotFoundComponent from './components/common/NotFoundComponent';
 import { MovieProvider } from './contexts/MovieContext';
 import { ShowProvider } from './contexts/ShowContext';
+import { MovieReviewProvider } from './contexts/MovieReviewContext';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <UserProvider>
         <MovieProvider>
         <ShowProvider>
+        <MovieReviewProvider>
         <Header />
 
         <Routes >
@@ -47,6 +49,7 @@ function App() {
           <Route path='/create/show' element={<CreateShow />} />
           <Route path='/catalog/movies/:movieId/edit' element={<MovieEdit />} />
           <Route path='/catalog/shows/:showId/edit' element={<ShowEdit />} />
+          <Route path='/catalog/movies/:movieId/review' element={<MovieReview />} />
           
 
           <Route element={<PrivateRoute />}>
@@ -58,7 +61,7 @@ function App() {
             
             
             
-            <Route path='/catalog/movies/:movieId/review' element={<MovieReview />} />
+            
             <Route path='/catalog/shows/:showId/review' element={<ShowReview />} />
             
             <Route path='/catalog/movies/suggestions' element={<MovieSuggestions />} />
@@ -70,6 +73,7 @@ function App() {
           <Route path='*' element={<NotFoundComponent />} />
 
         </Routes>
+        </MovieReviewProvider>
         </ShowProvider>
         </MovieProvider>
       </UserProvider>

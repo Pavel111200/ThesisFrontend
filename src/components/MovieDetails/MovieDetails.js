@@ -2,11 +2,13 @@ import {Link, useParams, useNavigate} from 'react-router-dom';
 import styles from './MovieDetails.module.css';
 import ReviewList from '../ReviewList/ReviewList';
 import { useMovieContext } from '../../contexts/MovieContext';
+import { useMovieReviewContext } from '../../contexts/MovieReviewContext';
 
 const MovieDetails = () => {
     const {movieId} = useParams();
     const navigate = useNavigate()
     const {getMovieById, deleteMovie} = useMovieContext();
+    const {getReviewsByMovieId} = useMovieReviewContext();
 
     const movie = getMovieById(movieId);
 
@@ -14,6 +16,8 @@ const MovieDetails = () => {
         deleteMovie(movieId)
         navigate("/catalog/movies")
     }
+
+    const reviews = getReviewsByMovieId(movieId);
 
     return (
         <>
@@ -52,7 +56,7 @@ const MovieDetails = () => {
             </div>
         </section>
         <section className={styles.reviewWrapper}>
-        {movie.length === 0 ? <h2>No review!</h2> : <ReviewList reviews={movie.reviews}/>}
+        {reviews.length === 0 ? <h2>No review!</h2> : <ReviewList reviews={reviews}/>}
     </section>
     </>
     );
