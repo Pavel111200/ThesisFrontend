@@ -1,4 +1,4 @@
-import styles from './ShowCard.module.css'
+import styles from '../../CardList/Card/Card.module.css'
 import { Link } from 'react-router-dom';
 
 const ShowCard = ({ show }) => {

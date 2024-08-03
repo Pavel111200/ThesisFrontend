@@ -3,11 +3,10 @@
 
 .formWrapper{
     border-radius: 20px;
-    width: 35%;
-    margin: 0 auto;
-    margin-top: 30px;
+    width: 45%;
+    margin: 45px auto;
     text-align: center;
-    padding: 56px 20px;
+    padding: 56px 0px;
     font-family: 'Open Sans', sans-serif;
     background-color: white;
 }
@@ -26,23 +25,23 @@
     font-size: 36px;
 }
 
+.inputWrapper{
+    position: relative;
+    width: 70%;
+    margin: 0px auto;
+}
 
 .formInput{
-    padding-left:30px;
-    width: 70%;
+    width: 100%;
     margin-bottom: 20px;
     border-radius: 5px;
     height: 26px;
     background-color: lightgray;
 }
 
-.inputWrapper{
-    position: relative;
-}
-
 .icon{
     position: absolute;
-    left: 75px;
+    right: 5px;
     top: 7px;
 }
 
@@ -63,4 +62,29 @@
 .link{
     display: block;
     color: #444;
+    padding: 0px 20px;
+}
+
+@media (max-width: 900px) {
+    .formWrapper {
+        width: 55%;
+    }
+}
+
+@media (max-width: 650px){
+    .formWrapper {
+        width: 60%;
+    }
+}
+
+@media (max-width: 405px){
+    .formTitle {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 389px){
+    .link {
+        font-size: 14px;
+    }
 }

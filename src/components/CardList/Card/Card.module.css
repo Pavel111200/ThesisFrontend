@@ -1,7 +1,7 @@
 .item{
     border-radius: 15px;
     list-style: none;
-    width: 20%;
+    width: 300px;
     position: relative;
     background-color: #fff;
     height: 400px;
@@ -17,12 +17,6 @@
 .title{
     font-weight: 700;
     font-size: 26px;
-    margin: 0px;
-}
-
-.rating{
-    font-size: 20px;
-    font-weight: 400;
     margin: 0px;
 }
 
